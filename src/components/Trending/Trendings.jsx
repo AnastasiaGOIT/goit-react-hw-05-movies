@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getTrends } from 'services/api';
+import { StyledNavLink, Title } from './Trending.styled';
 
 export const Trendings = () => {
   const [trends, setTrends] = useState(null);
+  // const [loading, setLoading] = useState(false);
   useEffect(() => {
     getTrends()
       .then(resp => resp.json())
@@ -12,11 +14,11 @@ export const Trendings = () => {
 
   return (
     <>
-      <h2>Trending today</h2>
+      <Title>Trending today</Title>
       <ul>
         {trends &&
           trends.map(trend => {
-            return <Link key={trend.id}>{trend.title}</Link>;
+            return <StyledNavLink key={trend.id}>{trend.title}</StyledNavLink>;
           })}
       </ul>
     </>

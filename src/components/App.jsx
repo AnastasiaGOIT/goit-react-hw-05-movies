@@ -1,16 +1,22 @@
 import { Route, Routes } from 'react-router-dom';
-
+import { Cast } from './Cast/Cast';
 import Layout from './Layout';
-import { HomePage } from './pages/HomePage';
-import { MoviesPage } from './pages/MoviesPage';
+import { MovieDetails } from './MovieDetails/MovieDetails';
+
+import { Home } from './pages/Home';
+import { Movies } from './pages/Movies';
+import { Reviews } from './Reviews/Reviews';
 
 export const App = () => {
   return (
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />}></Route>
-          <Route path="movies" element={<MoviesPage />} />
+          <Route index element={<Home />}></Route>
+          <Route path="movies" element={<Movies />}></Route>
+          <Route path=":movieId" element={<MovieDetails />}></Route>
+          <Route path="cast" element={<Cast />}></Route>
+          <Route path="reviews" element={<Reviews />}></Route>
         </Route>
       </Routes>
       <div

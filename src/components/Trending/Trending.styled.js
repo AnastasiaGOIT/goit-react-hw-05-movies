@@ -2,10 +2,11 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const StyledNavLink = styled(NavLink)`
-  padding: 20px;
+  display: flex;
+  padding: 5px;
   color: black;
-  text-decoration: none;
+  /* text-decoration: none; */
 `;
-export const Container = styled.div`
-  padding: 20px;
+export const Title = styled.h2`
+  margin-left: 30px;
 `;
