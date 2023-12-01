@@ -1,32 +1,15 @@
-import { MovieDetails } from 'components/MovieDetails/MovieDetails';
-import React, { useEffect, useState } from 'react';
-
-import { Button, Input, Form } from './Movies.styled';
+import { SearchForm } from 'components/SearchForm/SearchForm';
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 export const Movies = () => {
-  const [value, setValue] = useState('');
-
-  const handleSearch = ({ target }) => {
-    setValue(target.value);
-  };
-  const handleSubmit = e => {
-    e.preventDefault();
-    console.log(value);
-  };
-
+  const { movieId } = useParams();
+  useEffect(() => {
+    if (!movieId) return;
+  }, [movieId]);
   return (
     <>
-      <Form role="search" onSubmit={handleSubmit}>
-        <Input
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-          value={value}
-          onChange={handleSearch}
-        ></Input>
-        <Button type="submit">Search</Button>
-      </Form>
-      <MovieDetails value={value} />
+      <SearchForm />
     </>
   );
 };

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-export const StyledNavLink = styled(NavLink)`
+export const StyledLink = styled(Link)`
   display: flex;
   padding: 5px;
   color: black;
