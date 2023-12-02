@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { Cast } from './Cast/Cast';
 import Layout from './Layout';
 import { MovieDetails } from './MovieDetails/MovieDetails';
@@ -17,6 +17,7 @@ export const App = () => {
           <Route path="cast" element={<Cast />}></Route>
           <Route path="reviews" element={<Reviews />}></Route>
         </Route>
+        <Route path="*" element={<Navigate to={'/'} />}></Route>
       </Routes>
       <div
         style={{
