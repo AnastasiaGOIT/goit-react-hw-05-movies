@@ -6,7 +6,7 @@ import { StyledLink, Title } from './Trending.styled';
 
 export const MoviesList = () => {
   const location = useLocation();
-  // const { id } = useParams();
+
   const [trends, setTrends] = useState(null);
   // const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -29,7 +29,7 @@ export const MoviesList = () => {
               </li>
             );
           })}
-        <MovieDetails />
+        {/* <MovieDetails /> */}
         {/* <Outlet /> */}
       </ul>
     </>

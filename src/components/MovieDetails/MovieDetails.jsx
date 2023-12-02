@@ -1,25 +1,70 @@
 import { Button } from 'components/SearchForm/SearchForm.styled';
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+import React, { useState, useEffect, useRef, Suspense } from 'react';
+import {
+  Link,
+  Outlet,
+  useLocation,
+  useNavigate,
+  useParams,
+} from 'react-router-dom';
 import { getMovieDetails } from 'services/api';
 
 export const MovieDetails = () => {
+  const base_url = 'https://image.tmdb.org/t/p/w300';
   const navigate = useNavigate();
   const location = useLocation();
-  // const { idMovie } = useParams();
-  // useEffect(() => {
-  //   getMovieDetails(idMovie)
-  //     .then(resp => resp.json())
-  //     .then(movie => console.log(movie))
-  //     .catch(error => console.error('Error fetching movie details:', error));
-  // }, [idMovie]);
-  const handleClick = () => {
-    navigate(location.state);
-  };
+  const backLinkLocationRef = useRef(location.state?.from ?? '/');
+  const { movieId } = useParams();
+  console.log(movieId);
 
+  const [movieDetails, setMovieDetails] = useState(null);
+
+  useEffect(() => {
+    const fetchMovieDetails = async () => {
+      try {
+        const response = await getMovieDetails(movieId);
+        const movie = await response.json();
+        setMovieDetails(movie);
+        console.log(movie);
+      } catch (error) {
+        console.error('Error fetching movie details:', error);
+      }
+    };
+
+    fetchMovieDetails();
+  }, [movieId]);
+  const handleClick = () => {
+    navigate(backLinkLocationRef.current);
+  };
   return (
     <>
-      <Button onClick={handleClick}>Go back</Button>
+      <button type="button" onClick={handleClick}>
+        Go back
+      </button>
+      {movieDetails && (
+        <>
+          <img
+            src={`${base_url}${movieDetails.poster_path}`}
+            alt={movieDetails.title}
+          />
+          <h2>{movieDetails.title}</h2>
+          <p>{movieDetails.vote_average}</p>
+          <h3>Overview</h3>
+          <p>{movieDetails.overview}</p>
+          <h3>Additional information</h3>
+          <ul>
+            <li>
+              <Link to="cast">Cast</Link>
+            </li>
+            <li>
+              <Link to="reviews">Reviews</Link>
+            </li>
+          </ul>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Outlet />
+          </Suspense>
+        </>
+      )}
     </>
   );
 };
