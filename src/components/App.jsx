@@ -1,15 +1,15 @@
 import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
-// import { Cast } from './pages/Cast/Cast';
+import { Cast } from './Cast/Cast';
 import Layout from './Layout';
 import { MovieDetails } from './MovieDetails/MovieDetails';
 // import { Home } from './pages/Home';
 // import { Movies } from './pages/Movies';
-// import { Reviews } from './Reviews/Reviews';
+import { Reviews } from './Reviews/Reviews';
 import { lazy } from 'react';
 const Home = lazy(() => import('../components/pages/Home'));
 const Movies = lazy(() => import('../components/pages/Movies'));
-const Cast = lazy(() => import('../components/pages/Cast/Cast'));
-const Reviews = lazy(() => import('../components/pages/Reviews/Reviews'));
+// const Cast = lazy(() => import('./Cast/Cast'));
+// const Reviews = lazy(() => import('./Reviews/Reviews'));
 
 export const App = () => {
   return (
@@ -18,9 +18,10 @@ export const App = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />}></Route>
           <Route path="movies" element={<Movies />}></Route>
-          <Route path="movies/:movieId" element={<MovieDetails />}></Route>
-          <Route path="cast" element={<Cast />}></Route>
-          <Route path="reviews" element={<Reviews />}></Route>
+          <Route path="movies/:movieId" element={<MovieDetails />}>
+            <Route path="cast" element={<Cast />}></Route>
+            <Route path="reviews" element={<Reviews />}></Route>
+          </Route>
         </Route>
         <Route path="*" element={<Navigate to={'/'} />}></Route>
       </Routes>

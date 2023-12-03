@@ -11,6 +11,9 @@ import { getMovieDetails } from 'services/api';
 
 export const MovieDetails = () => {
   const base_url = 'https://image.tmdb.org/t/p/w300';
+
+  const defaultImg =
+    'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=300x300';
   const navigate = useNavigate();
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '/');
@@ -25,7 +28,7 @@ export const MovieDetails = () => {
         const response = await getMovieDetails(movieId);
         const movie = await response.json();
         setMovieDetails(movie);
-        console.log(movie);
+        // console.log(movie);
       } catch (error) {
         console.error('Error fetching movie details:', error);
       }
@@ -44,7 +47,11 @@ export const MovieDetails = () => {
       {movieDetails && (
         <>
           <img
-            src={`${base_url}${movieDetails.poster_path}`}
+            src={
+              movieDetails.poster_path
+                ? `${base_url}${movieDetails.poster_path}`
+                : defaultImg
+            }
             alt={movieDetails.title}
           />
           <h2>{movieDetails.title}</h2>

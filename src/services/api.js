@@ -12,3 +12,6 @@ export const getMovieDetails = id => {
 export const getMovieCast = id => {
   return fetch(`${BASE_URL}/movie/${id}/credits?api_key=${KEY}`);
 };
+export const getMovieReviews = id => {
+  return fetch(`${BASE_URL}/movie/${id}/reviews?api_key=${KEY}`);
+};
