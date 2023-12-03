@@ -8,3 +8,7 @@ export const getTrends = () => {
 export const getMovieDetails = id => {
   return fetch(`${BASE_URL}/movie/${id}?api_key=${KEY}`);
 };
+
+export const getMovieCast = id => {
+  return fetch(`${BASE_URL}/movie/${id}/credits?api_key=${KEY}`);
+};

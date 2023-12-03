@@ -54,10 +54,10 @@ export const MovieDetails = () => {
           <h3>Additional information</h3>
           <ul>
             <li>
-              <Link to="cast">Cast</Link>
+              <Link to={'cast'}>Cast</Link>
             </li>
             <li>
-              <Link to="reviews">Reviews</Link>
+              <Link to={'reviews'}>Reviews</Link>
             </li>
           </ul>
           <Suspense fallback={<div>Loading...</div>}>
