@@ -55,7 +55,7 @@ export const MovieDetails = () => {
             alt={movieDetails.title}
           />
           <h2>{movieDetails.title}</h2>
-          <p>{movieDetails.vote_average}</p>
+          <p>User score: {movieDetails.vote_average}</p>
           <h3>Overview</h3>
           <p>{movieDetails.overview}</p>
           <h3>Additional information</h3>

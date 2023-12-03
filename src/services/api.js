@@ -15,3 +15,7 @@ export const getMovieCast = id => {
 export const getMovieReviews = id => {
   return fetch(`${BASE_URL}/movie/${id}/reviews?api_key=${KEY}`);
 };
+
+export const getMovieSearch = value => {
+  return fetch(`${BASE_URL}search/movie?api_key=${KEY}`);
+};
