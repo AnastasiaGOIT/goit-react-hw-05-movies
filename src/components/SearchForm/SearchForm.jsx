@@ -1,8 +1,5 @@
-import { MovieDetails } from 'components/MovieDetails/MovieDetails';
-import { StyledLink } from 'components/MoviesList/MovieList.styled';
-import { MoviesList } from 'components/MoviesList/MoviesList';
 import { useEffect, useState } from 'react';
-// import React, { useState } from 'react';
+
 import { Link, useSearchParams } from 'react-router-dom';
 import { getMovieSearch } from 'services/api';
 
@@ -10,14 +7,12 @@ import { Button, Input, Form } from './SearchForm.styled';
 
 export const SearchForm = () => {
   const [value, setValue] = useState([]);
+  const [query, setQuery] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
   const search = searchParams.get('value') ?? '';
 
   const updateQueryString = e => {
-    if (e.target.value === '') {
-      return setSearchParams({});
-    }
-    setSearchParams({ value: e.target.value });
+    setQuery(e.target.value);
   };
 
   useEffect(() => {
@@ -36,8 +31,12 @@ export const SearchForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    if (query === '') {
+      return setSearchParams({});
+    }
+    setSearchParams({ value: query });
   };
-  console.log(value);
+
   return (
     <>
       <Form role="search" onSubmit={handleSubmit}>

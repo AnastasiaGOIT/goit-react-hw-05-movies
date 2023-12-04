@@ -1,4 +1,3 @@
-import { Button } from 'components/SearchForm/SearchForm.styled';
 import React, { useState, useEffect, useRef, Suspense } from 'react';
 import {
   Link,
@@ -41,9 +40,11 @@ export const MovieDetails = () => {
   };
   return (
     <>
-      <button type="button" onClick={handleClick}>
-        Go back
-      </button>
+      <div>
+        <button type="button" onClick={handleClick}>
+          Go back
+        </button>
+      </div>
       {movieDetails && (
         <>
           <img
