@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, Outlet, useLocation, useSearchParams } from 'react-router-dom';
 import { getMovieSearch } from 'services/api';
 
 import { Button, Input, Form } from './SearchForm.styled';
 
 export const SearchForm = () => {
+  const location = useLocation();
   const [value, setValue] = useState([]);
   const [query, setQuery] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
@@ -55,7 +56,7 @@ export const SearchForm = () => {
           value.map(movie => {
             return (
               <li key={movie.id}>
-                <Link>{movie.title}</Link>
+                <Link to={`${movie.id}`}>{movie.title}</Link>
               </li>
             );
           })}

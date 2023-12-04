@@ -13,5 +13,8 @@ export const Form = styled.form`
 `;
 export const Button = styled.button`
   padding: 10px 30px;
-  color: black;
+  color: burlywood;
+  background-color: #787878;
+  border-radius: 20px;
+  border: none;
 `;

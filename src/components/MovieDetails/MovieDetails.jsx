@@ -1,3 +1,4 @@
+import { Button } from './MovieDetails.styled';
 import React, { useState, useEffect, useRef, Suspense } from 'react';
 import {
   Link,
@@ -41,9 +42,9 @@ export const MovieDetails = () => {
   return (
     <>
       <div>
-        <button type="button" onClick={handleClick}>
+        <Button type="button" onClick={handleClick}>
           Go back
-        </button>
+        </Button>
       </div>
       {movieDetails && (
         <>

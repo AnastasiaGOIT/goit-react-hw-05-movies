@@ -5,11 +5,12 @@ export const StyledNavLink = styled(NavLink)`
   padding: 20px;
 
   color: black;
-  background-color: burlywood;
+
   text-decoration: none;
   width: 100%;
   &:active {
-    color: red;
+    color: white;
+    background-color: #787878;
   }
 `;
 export const StyledItem = styled.li`
@@ -20,5 +21,6 @@ export const Container = styled.ul`
   display: flex;
   flex-direction: row;
   list-style: none;
+  background-color: burlywood;
 `;
 export const Div = styled.div``;

@@ -28,8 +28,6 @@ export const MoviesList = () => {
               </li>
             );
           })}
-        {/* <MovieDetails /> */}
-        {/* <Outlet /> */}
       </ul>
     </>
   );
