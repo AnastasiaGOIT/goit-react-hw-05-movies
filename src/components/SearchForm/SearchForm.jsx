@@ -19,8 +19,9 @@ export const SearchForm = () => {
     const fetchMovieSearch = async () => {
       try {
         const response = await getMovieSearch(search);
+        console.log(response);
         const movieSearch = await response.json();
-        setValue(movieSearch.results || []);
+        setValue(movieSearch.results);
         console.log(movieSearch);
       } catch (error) {
         console.error('Error fetching movie details:', error);
@@ -44,7 +45,7 @@ export const SearchForm = () => {
           type="search"
           placeholder="Search"
           aria-label="Search"
-          value={search}
+          value={query}
           onChange={updateQueryString}
         ></Input>
         <Button type="submit">Search</Button>
