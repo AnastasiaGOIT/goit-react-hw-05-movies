@@ -1,12 +1,14 @@
+import { Loader } from 'components/Loader/Loader';
 import { useEffect, useState } from 'react';
 
-import { Link, Outlet, useLocation, useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { getMovieSearch } from 'services/api';
 
 import { Button, Input, Form } from './SearchForm.styled';
 
 export const SearchForm = () => {
-  const location = useLocation();
+  const [loading, setLoading] = useState(false);
+
   const [value, setValue] = useState([]);
   const [query, setQuery] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
@@ -18,6 +20,7 @@ export const SearchForm = () => {
 
   useEffect(() => {
     const fetchMovieSearch = async () => {
+      setLoading(true);
       try {
         const response = await getMovieSearch(search);
         console.log(response);
@@ -26,6 +29,8 @@ export const SearchForm = () => {
         console.log(movieSearch);
       } catch (error) {
         console.error('Error fetching movie details:', error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchMovieSearch();
@@ -51,6 +56,7 @@ export const SearchForm = () => {
         ></Input>
         <Button type="submit">Search</Button>
       </Form>
+      {loading && <Loader />}
       <ul>
         {value &&
           value.map(movie => {

@@ -1,3 +1,4 @@
+import { Loader } from 'components/Loader/Loader';
 import React, { useEffect, useState } from 'react';
 import { Outlet, useParams } from 'react-router-dom';
 import { getMovieCast } from 'services/api';
@@ -9,17 +10,20 @@ export const Cast = () => {
 
   const { movieId } = useParams();
   console.log(movieId);
-
+  const [loading, setLoading] = useState(false);
   const [movieCast, setMovieCast] = useState([]);
 
   useEffect(() => {
     const fetchMovieCast = async () => {
+      setLoading(true);
       try {
         const response = await getMovieCast(movieId);
         const cast = await response.json();
         setMovieCast(cast.cast);
       } catch (error) {
         console.error('Error fetching movie details:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -28,6 +32,7 @@ export const Cast = () => {
   console.log(movieCast);
   return (
     <div>
+      {loading && <Loader />}
       <ul>
         {movieCast &&
           movieCast.map(({ id, profile_path, name }) => {
