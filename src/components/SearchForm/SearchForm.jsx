@@ -23,7 +23,7 @@ export const SearchForm = () => {
   useEffect(() => {
     const fetchMovieSearch = async () => {
       try {
-        const response = await getMovieSearch(searchParams);
+        const response = await getMovieSearch(search);
         const movieSearch = await response.json();
         setValue(movieSearch.results || []);
         console.log(movieSearch);
@@ -32,19 +32,12 @@ export const SearchForm = () => {
       }
     };
     fetchMovieSearch();
-  }, []);
-
-  //   const handleSearch = ({ target }) => {
-  //     setValue(target.value);
-  //   };
+  }, [search]);
 
   const handleSubmit = e => {
     e.preventDefault();
-    const visibleMovies = value.filter(movie => movie.title.includes(search));
-    console.log(visibleMovies);
-    setValue(visibleMovies);
   };
-
+  console.log(value);
   return (
     <>
       <Form role="search" onSubmit={handleSubmit}>
