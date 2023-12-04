@@ -18,8 +18,6 @@ export const MovieDetails = () => {
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '/');
   const { movieId } = useParams();
-  console.log(movieId);
-
   const [movieDetails, setMovieDetails] = useState(null);
 
   useEffect(() => {
@@ -29,7 +27,6 @@ export const MovieDetails = () => {
         const response = await getMovieDetails(movieId);
         const movie = await response.json();
         setMovieDetails(movie);
-        // console.log(movie);
       } catch (error) {
         console.error('Error fetching movie details:', error);
       } finally {
@@ -42,6 +39,7 @@ export const MovieDetails = () => {
   const handleClick = () => {
     navigate(backLinkLocationRef.current);
   };
+
   return (
     <>
       <div>

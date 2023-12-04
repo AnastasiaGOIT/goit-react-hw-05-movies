@@ -1,19 +1,15 @@
 import { Loader } from 'components/Loader/Loader';
 import { useEffect, useState } from 'react';
-
 import { Link, useSearchParams } from 'react-router-dom';
 import { getMovieSearch } from 'services/api';
-
 import { Button, Input, Form } from './SearchForm.styled';
 
 export const SearchForm = () => {
   const [loading, setLoading] = useState(false);
-
   const [value, setValue] = useState([]);
   const [query, setQuery] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
   const search = searchParams.get('value') ?? '';
-
   const updateQueryString = e => {
     setQuery(e.target.value);
   };

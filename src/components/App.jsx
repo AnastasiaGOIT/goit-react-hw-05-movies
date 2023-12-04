@@ -2,15 +2,11 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { Cast } from './Cast/Cast';
 import Layout from './Layout';
 import { MovieDetails } from './MovieDetails/MovieDetails';
-// import { Home } from './pages/Home';
-// import { Movies } from './pages/Movies';
 import { Reviews } from './Reviews/Reviews';
 import { lazy } from 'react';
 import { SearchForm } from './SearchForm/SearchForm';
 const Home = lazy(() => import('../components/pages/Home'));
 const Movies = lazy(() => import('../components/pages/Movies'));
-// const Cast = lazy(() => import('./Cast/Cast'));
-// const Reviews = lazy(() => import('./Reviews/Reviews'));
 
 export const App = () => {
   return (

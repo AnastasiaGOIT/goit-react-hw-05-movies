@@ -6,9 +6,9 @@ import { Loader } from '../Loader/Loader';
 
 export const MoviesList = () => {
   const location = useLocation();
-
   const [trends, setTrends] = useState(null);
   const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     setLoading(true);
     getTrends()

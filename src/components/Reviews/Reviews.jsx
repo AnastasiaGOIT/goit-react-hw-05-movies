@@ -26,6 +26,7 @@ export const Reviews = () => {
     fetchMovieReviews();
   }, [movieId]);
   console.log(movieReviews);
+
   return (
     <div>
       {loading && <Loader />}
