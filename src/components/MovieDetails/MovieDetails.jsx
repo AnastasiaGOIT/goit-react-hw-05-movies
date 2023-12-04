@@ -5,13 +5,7 @@ import {
   StyledNavLink,
 } from './MovieDetails.styled';
 import React, { useState, useEffect, useRef, Suspense } from 'react';
-import {
-  Link,
-  Outlet,
-  useLocation,
-  useNavigate,
-  useParams,
-} from 'react-router-dom';
+import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { getMovieDetails } from 'services/api';
 import { Loader } from 'components/Loader/Loader';
 
