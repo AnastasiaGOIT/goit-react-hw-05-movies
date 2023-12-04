@@ -9,7 +9,7 @@ import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { getMovieDetails } from 'services/api';
 import { Loader } from 'components/Loader/Loader';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const [loading, setLoading] = useState(false);
   const base_url = 'https://image.tmdb.org/t/p/w300';
   const defaultImg =
@@ -85,3 +85,4 @@ export const MovieDetails = () => {
     </>
   );
 };
+export default MovieDetails;

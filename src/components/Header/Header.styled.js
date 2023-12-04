@@ -21,4 +21,3 @@ export const Container = styled.ul`
   list-style: none;
   background-color: burlywood;
 `;
-export const Div = styled.div``;
