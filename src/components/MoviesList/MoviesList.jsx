@@ -1,6 +1,5 @@
-import { MovieDetails } from 'components/MovieDetails/MovieDetails';
 import React, { useEffect, useState } from 'react';
-import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { getTrends } from 'services/api';
 import { StyledLink, Title } from './MovieList.styled';
 
