@@ -1,4 +1,4 @@
-import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { Cast } from './Cast/Cast';
 import Layout from './Layout';
 import { MovieDetails } from './MovieDetails/MovieDetails';
