@@ -1,16 +1,17 @@
+import { Loader } from 'components/Loader/Loader';
 import { MoviesList } from 'components/MoviesList/MoviesList';
 import { SearchForm } from 'components/SearchForm/SearchForm';
 import { useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { getMovieSearch } from 'services/api';
-//
 
 const Movies = () => {
   const location = useLocation();
   const [loading, setLoading] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
   const [value, setValue] = useState([]);
-  const [searchParams] = useSearchParams();
   const search = searchParams.get('value') ?? '';
+  const [query, setQuery] = useState('');
 
   useEffect(() => {
     const fetchMovieSearch = async () => {
@@ -30,23 +31,28 @@ const Movies = () => {
     fetchMovieSearch();
   }, [search]);
 
+  const updateQueryString = e => {
+    setQuery(e.target.value);
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (query === '') {
+      return setSearchParams({});
+    }
+    setSearchParams({ value: query });
+  };
   return (
     <>
-      <SearchForm />
-      <MoviesList value={value} location={location} loading={loading} />
-
-      {/* <ul>
-        {value &&
-          value.map(movie => {
-            return (
-              <li key={movie.id}>
-                <Link to={`${movie.id}`} state={location}>
-                  {movie.title}
-                </Link>
-              </li>
-            );
-          })}
-      </ul> */}
+      <SearchForm
+        handleSubmit={handleSubmit}
+        query={query}
+        updateQueryString={updateQueryString}
+      />
+      {loading && <Loader />}
+      {value.length > 0 && (
+        <MoviesList value={value} location={location} loading={loading} />
+      )}
     </>
   );
 };
