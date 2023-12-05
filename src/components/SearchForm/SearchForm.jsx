@@ -5,7 +5,7 @@ import { Button, Input, Form } from './SearchForm.styled';
 
 export const SearchForm = ({ loading }) => {
   const [query, setQuery] = useState('');
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [setSearchParams] = useSearchParams();
   const updateQueryString = e => {
     setQuery(e.target.value);
   };
