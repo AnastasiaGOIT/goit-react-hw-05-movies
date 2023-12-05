@@ -5,9 +5,10 @@ import { getTrends } from 'services/api';
 import { Title } from 'components/MoviesList/MovieList.styled';
 
 const Home = () => {
-  const location = useLocation();
   const [value, setValue] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  const location = useLocation();
 
   useEffect(() => {
     setLoading(true);
@@ -15,6 +16,7 @@ const Home = () => {
       .then(trends => setValue(trends.results))
       .finally(setLoading(false));
   }, []);
+
   return (
     <>
       <Title>Trending today</Title>

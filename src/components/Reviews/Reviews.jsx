@@ -4,10 +4,10 @@ import { Outlet, useParams } from 'react-router-dom';
 import { getMovieReviews } from 'services/api';
 
 export const Reviews = () => {
-  const { movieId } = useParams();
-  console.log(movieId);
   const [loading, setLoading] = useState(false);
   const [movieReviews, setMovieReviews] = useState([]);
+
+  const { movieId } = useParams();
 
   useEffect(() => {
     const fetchMovieReviews = async () => {

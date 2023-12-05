@@ -10,16 +10,20 @@ import { getMovieDetails } from 'services/api';
 import { Loader } from 'components/Loader/Loader';
 
 const MovieDetails = () => {
+
   const [loading, setLoading] = useState(false);
+  const [movieDetails, setMovieDetails] = useState(null);
+  
   const base_url = 'https://image.tmdb.org/t/p/w300';
   const defaultImg =
     'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=300x300';
+  
+  const { movieId } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '/');
-  const { movieId } = useParams();
-  const [movieDetails, setMovieDetails] = useState(null);
-  console.log(location);
+ 
+
   useEffect(() => {
     const fetchMovieDetails = async () => {
       setLoading(true);
@@ -36,6 +40,7 @@ const MovieDetails = () => {
 
     fetchMovieDetails();
   }, [movieId]);
+  
   const handleClick = () => {
     navigate(backLinkLocationRef.current);
   };

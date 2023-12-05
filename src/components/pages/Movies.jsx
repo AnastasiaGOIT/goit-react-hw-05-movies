@@ -6,12 +6,14 @@ import { useLocation, useSearchParams } from 'react-router-dom';
 import { getMovieSearch } from 'services/api';
 
 const Movies = () => {
-  const location = useLocation();
   const [loading, setLoading] = useState(false);
-  const [searchParams, setSearchParams] = useSearchParams();
   const [value, setValue] = useState([]);
-  const search = searchParams.get('value') ?? '';
   const [query, setQuery] = useState('');
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const search = searchParams.get('value') ?? '';
+
+  const location = useLocation();
 
   useEffect(() => {
     const fetchMovieSearch = async () => {
@@ -42,6 +44,7 @@ const Movies = () => {
     }
     setSearchParams({ value: query });
   };
+
   return (
     <>
       <SearchForm

@@ -4,6 +4,7 @@ import Layout from './Layout';
 import { Reviews } from './Reviews/Reviews';
 import { lazy } from 'react';
 import { SearchForm } from './SearchForm/SearchForm';
+
 const Home = lazy(() => import('../components/pages/Home'));
 const Movies = lazy(() => import('../components/pages/Movies'));
 const MovieDetails = lazy(() => import('../components/pages/MovieDetails'));
