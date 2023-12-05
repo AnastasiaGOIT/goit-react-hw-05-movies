@@ -1,12 +1,12 @@
+import { MoviesList } from 'components/MoviesList/MoviesList';
 import { SearchForm } from 'components/SearchForm/SearchForm';
-import { useEffect, useRef, useState } from 'react';
-import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { getMovieSearch } from 'services/api';
 //
 
 const Movies = () => {
   const location = useLocation();
-
   const [loading, setLoading] = useState(false);
   const [value, setValue] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -32,8 +32,10 @@ const Movies = () => {
 
   return (
     <>
-      <SearchForm loading={loading} value={value} />
-      <ul>
+      <SearchForm />
+      <MoviesList value={value} location={location} loading={loading} />
+
+      {/* <ul>
         {value &&
           value.map(movie => {
             return (
@@ -44,7 +46,7 @@ const Movies = () => {
               </li>
             );
           })}
-      </ul>
+      </ul> */}
     </>
   );
 };
